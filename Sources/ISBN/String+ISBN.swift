@@ -16,7 +16,7 @@ public extension String {
      Returns -1 if it encounters a non-digit.
     */
     
-    public static func checkDigitISBN10(for chars: ArraySlice<CChar>) -> CChar {
+    static func checkDigitISBN10(for chars: ArraySlice<CChar>) -> CChar {
         assert(chars.count == 9)
 
         var sum = 0
@@ -46,7 +46,7 @@ public extension String {
      Returns -1 if it encounters a non-digit.
      */
     
-    public static func checkDigitISBN13(for chars: ArraySlice<CChar>) -> CChar {
+    static func checkDigitISBN13(for chars: ArraySlice<CChar>) -> CChar {
         assert(chars.count == 12)
         
         var sum = 0
@@ -72,7 +72,7 @@ public extension String {
      Is this string a valid ISBN-10 code?
     */
     
-    public var isISBN10: Bool {
+    var isISBN10: Bool {
         guard self.count == 10, let chars = self.cString(using: .ascii) else {
             return false
         }
@@ -87,7 +87,7 @@ public extension String {
      Is this string a valid ISBN-13 code?
      */
 
-    public var isISBN13: Bool {
+    var isISBN13: Bool {
         
         guard
             // should be 13 chars long
@@ -111,7 +111,7 @@ public extension String {
      Given an isbn10 string, return the isbn13 equivalent.
      */
     
-    public var isbn10to13: String {
+    var isbn10to13: String {
         // if we've got the wrong length string, just return the original
         guard self.count == 10, let chars = self.cString(using: .ascii) else {
             return self
